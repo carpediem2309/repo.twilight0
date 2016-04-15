@@ -1,0 +1,12 @@
+------------------------
+Greek TV v0.0.4 (13-Apr-16)
+------------------------
+- Updated Live TV Channels
+- Fixes to logos
+
+------------------------
+Greek TV v0.0.3 (12-Apr-16)
+------------------------
+- Updated Live TV Channels
+- Minor code revision
+- Fixed logos
