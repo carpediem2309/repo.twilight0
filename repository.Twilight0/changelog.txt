@@ -1,2 +1,5 @@
-[B]Version 1.0[/B]
+[B]Version 1.0.1[/B]
+- Added logos and fanarts
+
+[B]Version 1.0.0[/B]
 - Initial version
