@@ -17,3 +17,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 _tools/*
+
+#other
+*.pyo
+.idea/*
