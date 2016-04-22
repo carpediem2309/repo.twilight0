@@ -1,5 +1,5 @@
 ------------------------
-Greek TV v0.0.6.1 (22-Apr-16)
+Greek TV v0.0.6.2 (22-Apr-16)
 ------------------------
 - Fixed issue with epg data
 

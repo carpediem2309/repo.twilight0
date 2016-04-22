@@ -17,22 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-
-import urllib
-import urllib2
-import urlparse
-import re
-import os
-import sys
-import threading
-import datetime
-import time
-import base64
-import xbmc
-import xbmcplugin
-import xbmcgui
-import xbmcaddon
-import xbmcvfs
+import urllib,urllib2,urlparse,re,os,sys,threading,datetime,time,base64,xbmc,xbmcplugin,xbmcgui,xbmcaddon,xbmcvfs
 from operator import itemgetter
 
 try:
@@ -1282,7 +1267,7 @@ class channels:
 
         self.channelMap = {'MEGA':'10', 'ANT1':'7', 'ALPHA':'5', 'STAR':'12', 'SKAI':'11', 'MACEDONIA TV':'8', 'EPT1':'4', 'EPT2':'352', 'RIK SAT':'83', 'BLUE SKY':'200', 'E TV':'326', 'EXTRA CHANNEL':'191', 'CHANNEL 9':'199', 'KONTRA CHANNEL':'194', 'ART CHANNEL':'248', 'AB CHANNEL':'249', 'TV 100':'229', 'DELTA TV':'236', 'DIKTYO TV':'235', 'STAR CENTRAL GR':'230', 'ALFA TV':'372', 'ATTICA TV':'190', 'BEST TV':'332', 'IONIAN CHANNEL':'360', 'SUPER B':'368', 'COSMOS TV':'370', 'KANALI 6':'377', 'R CHANNEL':'380', 'THRAKI NET':'382', 'ASTRA TV':'400', 'ACTION24':'189', 'BOYLH TV':'1', 'SBC':'228', 'NICKELODEON':'193', 'MAD TV':'9', 'MTV GREECE':'138', '4E':'222', 'TV AIGAIO':'330', 'CORFU TV':'331', 'KRITI TV':'227', 'EPIRUS TV1':'234', 'KOSMOS':'334', 'EURONEWS':'119', 'MEGA CYPRUS':'306', 'ANT1 CYPRUS':'258', 'SIGMA':'305', 'PLUS TV':'289', 'EXTRA TV':'290', 'CAPITAL':'282', 'RIK 1':'274', 'RIK 2':'277'}
 
-        self.entertainmentMap = ['ET3', 'CAPITAL']
+        self.entertainmentMap = ['EPT3', 'CAPITAL']
         self.movieMap = ['GREEK CINEMA 50s', 'GREEK CINEMA 60s', 'GREEK CINEMA 70s', 'GREEK CINEMA 80s', 'GREEK CINEMA']
         self.childrenMap = ['NICKELODEON', 'NICKELODEON+', 'SMILE', 'WZRA KIDS']
         self.sportMap = ['CY SPORTS', 'ODIE TV']
@@ -1339,15 +1324,15 @@ class channels:
                 url = common.replaceHTMLCodes(url)
 
                 try:
-                    if name in self.entertainmentMap: title = 'Ξ¨Ο…Ο‡Ξ±Ξ³Ο‰Ξ³ΞΉΞΊΟ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ±'.decode('iso-8859-7')
-                    elif name in self.childrenMap: title = 'Ξ Ξ±ΞΉΞ΄ΞΉΞΊΟ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ±'.decode('iso-8859-7')
-                    elif name in self.sportMap: title = 'Ξ‘ΞΈΞ»Ξ·Ο„ΞΉΞΊΟ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ±'.decode('iso-8859-7')
-                    elif name in self.musicMap: title = 'ΞΞΏΟ…ΟƒΞΉΞΊΟ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ±'.decode('iso-8859-7')
-                    elif name in self.newsMap: title = 'Ξ•Ξ½Ξ·ΞΌΞµΟΟ‰Ο„ΞΉΞΊΟ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ±'.decode('iso-8859-7')
-                    elif name in self.movieMap: title = 'Ξ¤Ξ±ΞΉΞ½Ξ―Ξ±'.decode('iso-8859-7')
+                    if name in self.entertainmentMap: title = 'Ψυχαγωγικό πρόγραμμα'.decode('iso-8859-7')
+                    elif name in self.childrenMap: title = 'Παιδικό πρόγραμμα'.decode('iso-8859-7')
+                    elif name in self.sportMap: title = 'Αθλητικό πρόγραμμα'.decode('iso-8859-7')
+                    elif name in self.musicMap: title = 'Μουσικό πρόγραμμα'.decode('iso-8859-7')
+                    elif name in self.newsMap: title = 'Ενημερωτικό πρόγραμμα'.decode('iso-8859-7')
+                    elif name in self.movieMap: title = 'Ταινία'.decode('iso-8859-7')
                     else: title = '0'
 
-                    epg = '[B]Ξ¤Ξ©Ξ΅Ξ‘[/B]\nΞ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚\n\n[B]Ξ•Ξ ΞΞΞ•ΞΞ[/B]\nΞ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚'.decode('iso-8859-7')
+                    epg = '[B]ΤΩΡΑ[/B]\nΔεν υπάρχουν πληροφορίες\n\n[B]ΕΠΟΜΕΝΟ[/B]\nΔεν υπάρχουν πληροφορίες'.decode('iso-8859-7')
 
                     image = '0'
 
@@ -1367,7 +1352,7 @@ class channels:
 
                     epg = '[B]%s[/B]\n%s'.decode('iso-8859-7') % (start, title)
                     try: epg += '\n\n[B]%s[/B]\n%s'.decode('iso-8859-7') % (stop, p[1]['constructed_titlegr'])
-                    except: epg += '\n\n[B]Ξ•Ξ ΞΞΞ•ΞΞ[/B]\nΞ”ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚'.decode('iso-8859-7') % stop
+                    except: epg += '\n\n[B]ΕΠΟΜΕΝΟ[/B]\nΔεν υπάρχουν πληροφορίες'.decode('iso-8859-7') % stop
                     epg = common.replaceHTMLCodes(epg)
                 except:
                     pass
@@ -1521,7 +1506,7 @@ class archives:
 
         for i in range(0, len(episodes)):
             try:
-                name = 'Ξ•Ο€ΞµΞΉΟƒΟΞ΄ΞΉΞΏ '.decode('iso-8859-7') + str(i+1)
+                name = 'Επεισόδιο '.decode('iso-8859-7') + str(i+1)
                 name = common.replaceHTMLCodes(name)
                 name = name.encode('utf-8')
 
@@ -2008,7 +1993,7 @@ class gm:
                     m = sort_dict[m]
                     name = '%04d-%02d-%02d' % (int(y), int(m), int(name))
 
-                name = 'Ξ•Ο€ΞµΞΉΟƒΟΞ΄ΞΉΞΏ '.decode('iso-8859-7') + name
+                name = 'Επεισόδιο '.decode('iso-8859-7') + name
                 name = common.replaceHTMLCodes(name)
                 name = name.encode('utf-8')
 
@@ -3838,7 +3823,6 @@ class livestream:
             return url
         except:
             return
-
 
     def madtv(self, url):
         try:
