@@ -26,7 +26,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.6" provider-name="twilight0">
+<addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.6.1" provider-name="twilight0">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.requests" version="1.0.0"/>
