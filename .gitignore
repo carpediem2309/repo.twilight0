@@ -16,8 +16,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-_tools/*
 
 #other
 *.pyo
 .idea/*
+plugin.video.greek.tv/lib/addon.py.bak
+plugin.video.youtube/*
+script.module.urlresolver/*
+script.module.liveresolver/*
+_tools/*
