@@ -19,8 +19,6 @@ $RECYCLE.BIN/
 
 #other
 *.pyo
-plugin.video.greek.tv/.idea/*
-plugin.video.greek.tv/lib/addon.py.bak
 plugin.video.youtube/*
 script.module.urlresolver/*
 script.module.liveresolver/*
