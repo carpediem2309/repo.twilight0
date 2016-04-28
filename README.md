@@ -1,4 +1,5 @@
-# Hello everyone and welcome to my github repository page. Below a brief explanation of my addon.
+## Hello everyone and welcome to my github repository page.
+## Below a brief explanation of my addon.
 
 ![](https://github.com/Twilight0/repo.twilight0/raw/master/plugin.video.greek.tv/icon.png)
 
