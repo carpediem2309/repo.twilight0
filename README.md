@@ -19,6 +19,6 @@ _Features of Greek TV:_
 Support thread here: [https://forums.tvaddons.ag/addon-releases/43897-greek-tv-hellenic-tv-derived-add.html](https://forums.tvaddons.ag/addon-releases/43897-greek-tv-hellenic-tv-derived-add.html)
 
 Repository also contains the following:
-1. TuneIn Radio 3.0.x, with Greek Translation by me.
-1. Youtube Addon with API fix (current ver. 5.1.20.6). Includes greek tranlation by me.
-1. urlresolver & liveresolver (latest versions)
+* TuneIn Radio 3.0.x, with Greek Translation by me.
+* Youtube Addon with API fix (current ver. 5.1.20.6). Includes greek tranlation by me.
+* urlresolver & liveresolver (latest versions)
