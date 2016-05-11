@@ -1,3 +1,6 @@
+*** 3.0.2 ***
+Added Dutch & German translations
+
 *** 3.0.1 ***
 Added greek translation
 Changed from "xbmc.log" to "kodi.log" in translation strings
