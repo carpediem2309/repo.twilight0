@@ -1,3 +1,6 @@
+5.2.1 (2016-05-12)
+[add] Additional "Recommend for You" section (thanks to anxdpanic)
+
 5.2.0 (2016-05-11)
 [upd] APi-Changer - First login delete old Credentials - New Login Required! Sorry :)
 
@@ -7,6 +10,7 @@ Workaround for the Quota Exceed-Error.
 [add] Auto-Reauthenticate with Pool-Key on "Quota Exceed" error
 [add] "Use own API"-Button
 [hint] The Message "Invalid Credentials" after Update could be fixed with deleting the Userdata-Settings.xml
+[add] add Recommendations to main listing when logged in [anxdpanic]
 
 5.1.20.6 (2016-04-03)
 [add] Greek Translation from twilight0
