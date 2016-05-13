@@ -23,3 +23,4 @@ plugin.video.youtube/*
 script.module.urlresolver/*
 script.module.liveresolver/*
 _tools/*
+plugin.video.greek.tv/lib/rpdb2.py
