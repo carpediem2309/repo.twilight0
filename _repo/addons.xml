@@ -28,6 +28,24 @@
 	</extension>
 </addon>
 
+<addon id="plugin.program.grecotm" name="[COLOR black].[/COLOR] GRecoTM Wizard" version="1.0.0" provider-name="GRecoTM">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">GRecoTM</summary>
+    <description lang="en">Greek Tools</description>
+	<disclaimer lang="en">Delete ALL DATA !!!!!</disclaimer>
+		<forum>y</forum>
+		<source> y</source>
+		<website>https://www.facebook.com/groups/GreekXBMC/</website>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.6.3" provider-name="twilight0">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
@@ -136,5 +154,22 @@
 		<summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
 		<description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
 	</extension>
+</addon>
+
+<addon id="service.rytecepgdownloader"
+    name="Rytec EPG Downloader"
+    version="16.5.9"
+    provider-name="Jin">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+        <import addon="script.module.requests"/>
+    </requires>
+    <extension point="xbmc.service" library="service.py" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>XMLTV EPG Downloader</summary>
+        <description>XMLTV EPG Downloader</description>
+        <forum>http://kodinerds.net</forum>
+    </extension>
 </addon>
 </addons>
