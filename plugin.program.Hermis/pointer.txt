@@ -1,6 +1,6 @@
 
 name="Hermis Wizard"
-url="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_repo/Hermis/hermis_build.zip"
+url="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_repo/Builds/hermis.zip"
 img="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/icon.png"
 fanart="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/fanart.jpg"
 description="Hermis Wizard installs a lightweight build optimized for Greek users"

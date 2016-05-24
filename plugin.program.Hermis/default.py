@@ -15,7 +15,7 @@ base='https://github.com/Twilight0/repo.twilight0/'
 ADDON=xbmcaddon.Addon(id='plugin.program.Hermis')
 dialog = xbmcgui.Dialog()    
 VERSION = "1.0.3"
-PATH = "plugin.program.Hermis"            
+PATH = "plugin.program.Hermis"
 
     
 def CATEGORIES():
