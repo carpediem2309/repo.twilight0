@@ -1,8 +1,8 @@
 
-name="WizardName"
-url="https://copy.com/vPJVfIg4UWz6a7GJ/0.6hushamaddons.zip?download=1"
-img="https://raw.githubusercontent.com/hmemar/husham.com/master/images/hushamme.jpg"
-fanart="https://raw.githubusercontent.com/hmemar/husham.com/master/images/hushamme.jpg"
-description="My new Wizard with help from Husham"
+name="Hermis Wizard"
+url=""
+img="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/icon.png"
+fanart="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/fanart.jpg"
+description="Hermis Wizard installs a lightweight build optimized for Greek users"
 
 

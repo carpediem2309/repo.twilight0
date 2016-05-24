@@ -12,14 +12,14 @@ import ntpath
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
 base='http://www.husham.com'
-ADDON=xbmcaddon.Addon(id='plugin.video.mykodibuildwizard')
+ADDON=xbmcaddon.Addon(id='plugin.program.Hermis')
 dialog = xbmcgui.Dialog()    
-VERSION = "1.0.1"
-PATH = "mykodibuildwizard"            
+VERSION = "1.0.0"
+PATH = "plugin.program.Hermis"            
 
     
 def CATEGORIES():
-    link = OPEN_URL('https://copy.com/web/users/user-15744197/copy/wizard.txt?revision=34&download=1').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/plugin.program.Hermis/pointer.txt').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
