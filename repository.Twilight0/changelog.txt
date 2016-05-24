@@ -1,3 +1,6 @@
+[B]Version 1.0.2[/B]
+- Reduced icon size
+
 [B]Version 1.0.1[/B]
 - Added logos and fanarts
 

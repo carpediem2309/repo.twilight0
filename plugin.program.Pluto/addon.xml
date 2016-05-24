@@ -8,7 +8,7 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Pluto Wizard</summary>
-    <description lang="en">Pluto Wizard installs a lightweight build optimized for Greek users</description>
+    <description lang="en">Pluto Wizard installs a lightweight build optimized for Greek users. Designed for Kodi 16.x.</description>
     <platform>all</platform>
   </extension>
 </addon>
