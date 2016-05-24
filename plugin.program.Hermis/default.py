@@ -11,6 +11,7 @@ import ntpath
 
 
 USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
+base='https://github.com/Twilight0/repo.twilight0/'
 ADDON=xbmcaddon.Addon(id='plugin.program.Hermis')
 dialog = xbmcgui.Dialog()    
 VERSION = "1.0.3"
