@@ -22,7 +22,5 @@ $RECYCLE.BIN/
 plugin.video.youtube/*
 script.module.urlresolver/*
 script.module.liveresolver/*
-plugin.program.grecotm/*
-_repo/plugin.program.grecotm/*
 _tools/*
 plugin.video.greek.tv/lib/rpdb2.py
