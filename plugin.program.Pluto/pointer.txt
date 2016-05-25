@@ -1,8 +1,0 @@
-
-name="Pluto Wizard"
-url="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_repo/Builds/pluto.zip"
-img="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/icon.png"
-fanart="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/fanart.jpg"
-description="Pluto Wizard installs a lightweight build optimized for Greek users"
-
-

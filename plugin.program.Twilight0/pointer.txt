@@ -1,0 +1,13 @@
+name="Hermis Build is optimized for Kodi 15.x"
+url="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_repo/Builds/hermis.zip"
+img="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/icon.png"
+fanart="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/fanart.jpg"
+description="Hermis Build is optimized for Kodi 15.x"
+version="1.0.3"
+
+name="Pluto Build is optimized for Kodi 16.x"
+url="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/_repo/Builds/pluto.zip"
+img="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/icon.png"
+fanart="https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/repository.Twilight0/fanart.jpg"
+description="Pluto Build is optimized for Kodi 16.x"
+version="1.0.3"

@@ -28,7 +28,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.program.Hermis" name="Hermis Wizard" version="1.0.3" provider-name="Twilight0">
+<addon id="plugin.program.Twilight0" name="Twilight0 Wizard" version="1.0.3" provider-name="Twilight0">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -36,22 +36,8 @@
         <provides>executable</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Hermis Wizard</summary>
-    <description lang="en">Hermis Wizard installs a lightweight build optimized for Greek users. Designed for Kodi 15.x.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.program.Pluto" name="Pluto Wizard" version="1.0.3" provider-name="Twilight0">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Pluto Wizard</summary>
-    <description lang="en">Pluto Wizard installs a lightweight build optimized for Greek users. Designed for Kodi 16.x.</description>
+    <summary lang="en">Twilight0 Wizard</summary>
+    <description lang="en">Twilight0 Wizard can install a build duet optimized for Greek users. Lightweight, designed for either Kodi 15.x or 16.x.</description>
     <platform>all</platform>
   </extension>
 </addon>
