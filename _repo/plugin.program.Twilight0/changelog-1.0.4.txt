@@ -1,3 +1,8 @@
+v1.0.4
+Reduced icon size
+Added fanart
+Renamed pointer.txt to "links"
+
 v1.0.3
 bug fix
 

@@ -19,7 +19,7 @@ PATH = "plugin.program.Twilight0"
 
     
 def CATEGORIES():
-    link = OPEN_URL('https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/plugin.program.Twilight0/pointer.txt').replace('\n','').replace('\r','')
+    link = OPEN_URL('https://raw.githubusercontent.com/Twilight0/repo.twilight0/master/plugin.program.Twilight0/links').replace('\n','').replace('\r','')
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,fanart,description in match:
         addDir(name,url,1,iconimage,fanart,description)
