@@ -869,7 +869,7 @@ class i11iI11iIiIi ( xbmcgui . WindowDialog ) :
    Ii11iiI = urllib . URLopener ( )
    Ii11iiI . retrieve ( 'https://www.speedtest.net/result/%s.png' % O00o0o0000o0o , self . location + "%s.png" % O00o0o0000o0o )
    oO0oO0 . ok ( "Result Saved!" , "'%s.png'" % O00o0o0000o0o + " was saved to '" + self . location + "'" )
-  oO0oO0 . ok ( "Result Saved!" , "Brought to you by http://www.arnubox.com \n Try our new ARNU Box Mach 10, the fastest set top box on the market" )
+  oO0oO0 . ok ( "Result Saved!" , "Thank you for using Ookla Speedtest.net" )
   self . close ( )
   if 17 - 17: Oo0Ooo % ooO0oo0oO0 . i1IIi / OoooooooOO
   if 28 - 28: oooO0oo0oOOOO . II111iiii / I1ii11iIi11i + II111iiii . OoooooooOO . I11iii11IIi
@@ -902,7 +902,7 @@ class O000OOO0OOo ( xbmcgui . WindowDialog ) :
    Ii11iiI = urllib . URLopener ( )
    Ii11iiI . retrieve ( 'https://www.speedtest.net/result/4670696458.png' , self . location + "4670696458.png" )
    oO0oO0 . ok ( "Result Saved!" , "'4670696458.png'" + " was saved to '" + self . location + "'" )
-  oO0oO0 . ok ( "Result Saved!" , "Brought to you by http://www.arnubox.com \n Try our new ARNU Box Mach 10, the fastest set top box on the market" )
+  oO0oO0 . ok ( "Result Saved!" , "Thank you for using Ookla Speedtest.net" )
   self . close ( )
   if 10 - 10: o0oOOo0O0Ooo / i11iIiiIii
   if 92 - 92: i111I . o0ooo
