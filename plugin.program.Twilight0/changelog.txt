@@ -1,3 +1,13 @@
+Rebased Wizard with code found in the "The Wizard Toolbox" (http://kodimadeeasy.uk/) Thank you very much.
+Added the following:
+- Addon Installer
+- Common Maintenance Tools (Fresh Start, Cache Cleaner, Package Purger)
+- Disclaimer Message
+New icons for builds
+New icons for above mentioned tools
+Renamed "links" file to "builds"
+Added addons file for Addon Installer
+
 v1.0.4
 Reduced icon size
 Added fanart

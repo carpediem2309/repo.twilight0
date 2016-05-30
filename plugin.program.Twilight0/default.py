@@ -35,10 +35,10 @@ H = 'http://'
 EXCLUDES = ['script.module.addon.common','plugin.program.Twilight0']
 
 def INDEX():
-    addDir('INSTALLS',BASEURL,2,ART+'install.png',FANART,'')
+    addDir('THE BUILDS',BASEURL,2,ART+'install.png',FANART,'')
     addDir('ADDONS',BASEURL,9,ART+'addons.png',FANART,'')
     addDir('MAINTENANCE',BASEURL,3,ART+'maintenance.png',FANART,'')
-    addDir('OUR MESSAGE',BASEURL,8,ART+'message.png',FANART,'')
+    addDir('DISCLAIMER',BASEURL,8,ART+'message.png',FANART,'')
     setView('movies', 'MAIN')
 
 def BuildMenu():
@@ -83,8 +83,8 @@ def TextBoxes(heading,announce):
       return
   TextBox()
 
-def facebook():
-    TextBoxes('Test', 'Test2')
+def disclaimer():
+    TextBoxes('Disclaimer', 'This software is provided as is, under the terms of GPL v3 Licence. Use at your own discretion without any form of warranty.')
 
         
     
@@ -138,7 +138,7 @@ def addons(name,url,description):
     print '======================================='
     extract.all(lib,addonfolder,dp)
     dialog = xbmcgui.Dialog()
-    dialog.ok("The Wizards Toolbox", "Your Addon Has Been Installed", "This will not appear till you restart Kodi")
+    dialog.ok("Twilight0 Wizard", "Your Addon Has Been Installed", "This will not appear till you restart Kodi")
 	
 	
 ################################
@@ -164,10 +164,10 @@ def DeletePackages(url):
                     for d in dirs:
                         shutil.rmtree(os.path.join(root, d))
                     dialog = xbmcgui.Dialog()
-                    dialog.ok("The Wizards Toolbox", "Packages Have now been cleared", "Back to the Fun")
+                    dialog.ok("Twilight0 Wizard", "Packages Have now been cleared", "Back to the Fun")
     except: 
         dialog = xbmcgui.Dialog()
-        dialog.ok("The Wizards Toolbox", "Sorry we were not able to remove Package Files", "My Apologies")
+        dialog.ok("Twilight0 Wizard", "Sorry we were not able to remove Package Files", "My Apologies")
     
 
 
@@ -371,7 +371,7 @@ def deletecachefiles(url):
 				
 
     dialog = xbmcgui.Dialog()
-    dialog.ok("The Wizards Toolbox", " All Cache Files Removed", "Enjoy")
+    dialog.ok("Twilight0 Wizard", " All Cache Files Removed", "Enjoy")
  
         
 def OPEN_URL(url):
@@ -476,7 +476,7 @@ def platform():
 ############################
 
 def FRESHSTART(params):
-    plugintools.log("freshstart.main_list "+repr(params)); yes_pressed=plugintools.message_yes_no(AddonTitle,"Do you wish to remove everything but","The Wizards Toolbox")
+    plugintools.log("freshstart.main_list "+repr(params)); yes_pressed=plugintools.message_yes_no(AddonTitle,"Do you wish to remove everything but","Twilight0 Wizard")
     if yes_pressed:
         addonPath=xbmcaddon.Addon(id=AddonID).getAddonInfo('path'); addonPath=xbmc.translatePath(addonPath); 
         xbmcPath=os.path.join(addonPath,"..",".."); xbmcPath=os.path.abspath(xbmcPath); plugintools.log("freshstart.main_list xbmcPath="+xbmcPath); failed=False
@@ -493,8 +493,8 @@ def FRESHSTART(params):
                     except:
                         if name not in ["Database","userdata"]: failed=True
                         plugintools.log("Error removing "+root+" "+name)
-            if not failed: plugintools.log("freshstart.main_list All user files removed, you now have a clean install"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with The Wizards Toolbox","Please reboot your system or restart Kodi in order for the changes to be applied.")
-            else: plugintools.log("freshstart.main_list User files partially removed"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with The Wizards Toolbox to install a build","Please reboot your system or restart Kodi in order for the changes to be applied.")
+            if not failed: plugintools.log("freshstart.main_list All user files removed, you now have a clean install"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with Twilight0 Wizard","Please reboot your system or restart Kodi in order for the changes to be applied.")
+            else: plugintools.log("freshstart.main_list User files partially removed"); plugintools.message(AddonTitle,"The process is complete, you're now back to a fresh Kodi configuration with Twilight0 Wizard to install a build","Please reboot your system or restart Kodi in order for the changes to be applied.")
         except: plugintools.message(AddonTitle,"Problem found","Your settings has not been changed"); import traceback; plugintools.log(traceback.format_exc()); plugintools.log("freshstart.main_list NOT removed")
         plugintools.add_item(action="",title="Now Exit Kodi",folder=False)
     else: plugintools.message(AddonTitle,"Your settings","has not been changed"); plugintools.add_item(action="",title="Done",folder=False)
@@ -610,7 +610,7 @@ elif mode==7:
        DeletePackages(url)
 
 elif mode==8:
-       facebook()
+       disclaimer()
        
 elif mode==9:
        AddonsMenu()
