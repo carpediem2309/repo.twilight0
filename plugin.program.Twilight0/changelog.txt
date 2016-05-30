@@ -1,3 +1,5 @@
+v2.0.0
+Skipped version 1.0.5, bump to 2.0.0 due to huge code update
 Rebased Wizard with code found in the "The Wizard Toolbox" (http://kodimadeeasy.uk/) Thank you very much.
 Added the following:
 - Addon Installer
