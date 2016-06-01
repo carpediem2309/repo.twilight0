@@ -24,6 +24,7 @@ script.module.urlresolver/*
 script.module.liveresolver/*
 _tools/*
 plugin.video.greek.tv/lib/rpdb2.py
+plugin.video.greek.tv/.idea/*
 plugin.program.Twilight0/.idea/*
 plugin.grogram.SpeedTester.net/.idea/*
 plugin.program.SpeedTester.net/.idea/workspace.xml
