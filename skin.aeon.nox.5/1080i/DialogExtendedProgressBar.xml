@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<coordinates>
-		<left>560</left>
+		<left>880</left>
 		<top>30</top>
 	</coordinates>
 	<include>Animation_DialogPopup</include>
