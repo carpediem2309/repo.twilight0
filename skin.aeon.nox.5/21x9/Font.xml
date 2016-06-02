@@ -87,79 +87,79 @@
 		<font>
 			<name>font12_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>26</size>
 		</font>
 		<font>
 			<name>font13_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>30</size>
 		</font>
 		<font>
 			<name>font14_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>33</size>
 		</font>
 		<font>
 			<name>font15_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>35</size>
 		</font>
 		<font>
 			<name>font16_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>38</size>
 		</font>
 		<font>
 			<name>font16_title_bold</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase bold</style>
+			<style> bold</style>
 			<size>38</size>
 		</font>
 		<font>
 			<name>font24_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>36</size>
 		</font>
 		<font>
 			<name>font30_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>45</size>
 		</font>
 		<font>
 			<name>font30_title_bold</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase bold</style>
+			<style> bold</style>
 			<size>45</size>
 		</font>
 		<font>
 			<name>font48_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>48</size>
 		</font>
 		<font>
 			<name>font35_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>52</size>
 		</font>
 		<font>
 			<name>font35_title_bold</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase bold</style>
+			<style> bold</style>
 			<size>52</size>
 		</font>
 		<font>
 			<name>font45caps_title</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>68</size>
 		</font>
 		<font>
@@ -176,7 +176,7 @@
 		<font>
 			<name>WeatherTemp</name>
 			<filename>RobotoCondensed-Regular.ttf</filename>
-			<style>uppercase</style>
+			<style></style>
 			<size>120</size>
 		</font>
 		<!-- Icons -->
@@ -273,61 +273,61 @@
             <name>font12_title</name>
             <filename>OpenSans.ttf</filename>
             <size>26</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font13_title</name>
             <filename>OpenSans.ttf</filename>
             <size>30</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font14_title</name>
             <filename>OpenSans.ttf</filename>
             <size>33</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font15_title</name>
             <filename>OpenSans.ttf</filename>
             <size>35</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font16_title</name>
             <filename>OpenSans.ttf</filename>
             <size>38</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font24_title</name>
             <filename>OpenSans.ttf</filename>
             <size>36</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font30_title</name>
             <filename>OpenSans.ttf</filename>
             <size>45</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font48_title</name>
             <filename>OpenSans.ttf</filename>
             <size>48</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font35_title</name>
             <filename>OpenSans.ttf</filename>
             <size>52</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font45caps_title</name>
             <filename>OpenSans.ttf</filename>
             <size>68</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>font_MainMenu</name>
@@ -343,7 +343,7 @@
             <name>WeatherTemp</name>
             <filename>OpenSans.ttf</filename>
             <size>120</size>
-            <style>uppercase</style>
+            <style></style>
         </font>
         <font>
             <name>IconTiny</name>
