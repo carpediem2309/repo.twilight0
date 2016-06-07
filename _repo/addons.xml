@@ -28,7 +28,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.program.SpeedTester.net" name="SpeedTester.net" version="1.0.1" provider-name="Twilight0">
+<addon id="plugin.program.SpeedTester.net" name="SpeedTester.net" version="1.0.2" provider-name="Twilight0">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -57,7 +57,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.6.4" provider-name="twilight0">
+<addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.7" provider-name="twilight0">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.requests" version="1.0.0"/>
@@ -66,18 +66,18 @@
 		<import addon="script.module.urlresolver" optional="true"/>
 		<import addon="plugin.video.youtube" optional="true"/>
 	</requires>
-	<extension point="xbmc.python.pluginsource" library="/lib/addon.py">
+	<extension point="xbmc.python.pluginsource" library="addon.py">
 		<provides>video audio</provides>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">Greek television</summary>
 		<summary lang="el">Ελληνική τηλεόραση</summary>
-		<description lang="en">Greek TV is a Hellenic TV derived add-on initially developed by lambda. Please visit www.TVADDONS.ag for support</description>
+		<description lang="en">Greek TV is a Hellenic TV derived add-on developed by lambda. Please visit www.TVADDONS.ag for support</description>
 		<disclaimer lang="en">Τhis addon offers content available in Greece.</disclaimer>
 		<disclaimer lang="el">Το πρόσθετο αυτό προσφέρει περιεχόμενο διαθέσιμο στην Ελλάδα.</disclaimer>
 		<forum>https://forums.tvaddons.ag/addon-releases/43897-greek-tv-hellenic-tv-derived-add.html</forum>
-		<source>https://github.com/Twilight0/plugin.video.greek.tv</source>
-		<website>https://github.com/Twilight0/plugin.video.greek.tv</website>
+		<source>https://github.com/Twilight0/repo.twilight0/tree/master/plugin.video.greek.tv</source>
+		<website>https://github.com/Twilight0/repo.twilight0/tree/master/plugin.video.greek.tv</website>
 		<platform>all</platform>
 	</extension>
 </addon>

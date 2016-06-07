@@ -1,4 +1,13 @@
 ------------------------
+Greek TV v0.0.7 (07-Jun-16)
+------------------------
+- Reformated the code & various cosmetics
+- Removed commonfunctionsdummy & moved scripts to addon root
+- Removed vettle internal resolver & akamaisecureproxy
+- Initial support for urlresolver
+- Updated Live streams
+
+------------------------
 Greek TV v0.0.6.4 (27-May-16)
 ------------------------
 - Reduced fanart size & dimensions

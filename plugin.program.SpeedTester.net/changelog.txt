@@ -1,3 +1,6 @@
+1.0.2 - 07JUN16
+• Code reformat
+
 1.0.1 - 27MAY16
 • Forked by Twilight0 and removed advertisements
 
