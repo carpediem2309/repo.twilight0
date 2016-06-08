@@ -1,4 +1,9 @@
 ------------------------
+Greek TV v0.0.7.3 (09-Jun-16)
+------------------------
+- Added transparency to Cannali's logo
+
+------------------------
 Greek TV v0.0.7.2 (09-Jun-16)
 ------------------------
 - Added logo for cannali web music channel
