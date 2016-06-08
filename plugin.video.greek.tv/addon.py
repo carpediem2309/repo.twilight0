@@ -299,8 +299,8 @@ class GetUrl(object):
             result = []
             for c in cookies: result.append('%s=%s' % (c.name, c.value))
             result = "; ".join(result)
-        elif output == 'geturl':
-            result = response.geturl()
+        elif output == 'GetUrl':
+            result = response.GetUrl()
         else:
             result = response.read()
         if close == True:
@@ -311,12 +311,12 @@ class GetUrl(object):
 class Uniquelist(object):
     def __init__(self, list):
         uniqueSet = set()
-        uniqueList = []
+        Uniquelist = []
         for n in list:
             if n not in uniqueSet:
                 uniqueSet.add(n)
-                uniqueList.append(n)
-        self.list = uniqueList
+                Uniquelist.append(n)
+        self.list = Uniquelist
 
 
 class Thread(threading.Thread):
@@ -1660,9 +1660,7 @@ class Archives:
                 url = 'archives_%s_%s_%s' % (arc, imdb, str(i))
                 url = url.encode('utf-8')
 
-                self.list.append(
-                    {'name': name, 'url': url, 'image': image, 'fanart': fanart, 'date': '0', 'genre': genre,
-                     'plot': plot, 'title': name, 'show': show})
+                self.list.append({'name': name, 'url': url, 'image': image, 'fanart': fanart, 'date': '0', 'genre': genre, 'plot': plot, 'title': name, 'show': show})
             except:
                 pass
 
@@ -1978,7 +1976,7 @@ class GM:
                 result = re.compile('greek-movies.com/(movies.php[?]m=\d*)').findall(result)
             elif content == 'tv':
                 result = re.compile('greek-movies.com/(shows.php[?]s=\d*|series.php[?]s=\d*)').findall(result)
-            result = uniqueList(result).list
+            result = Uniquelist(result).list
 
             for i in result:
                 self.list.append(
@@ -2208,12 +2206,12 @@ class GM:
                 result = GetUrl(url, timeout='20').result
                 result = common.parseDOM(result, "DIV", attrs={"class": "maincontent"})[0]
                 result = re.compile('(<a.+?</a>)').findall(result)
-                result = uniqueList(result).list
+                result = Uniquelist(result).list
             else:
                 u = url.split('?')
                 result = GetUrl(u[0], post=u[1], timeout='20').result
                 result = re.compile('(<a.+?</a>)').findall(result)
-                result = uniqueList(result).list
+                result = Uniquelist(result).list
 
             sources = []
             for i in result:
@@ -2583,7 +2581,7 @@ class Alpha:
             result = GetUrl(self.shows_link).result
             filter = common.parseDOM(result, "span", attrs={"class": "field-content"})
             filter = common.parseDOM(filter, "a", ret="href")
-            filter = uniqueList(filter).list
+            filter = Uniquelist(filter).list
 
             threads = []
             result = ''
@@ -2693,7 +2691,7 @@ class Alpha:
 
             try:
                 url = common.parseDOM(result, "embed", ret="src")
-                url = [i for i in url if 'youtube' in i][0]
+                url = [i for i in url if 'Youtube' in i][0]
                 url = commonresolvers.youtube().resolve(url)
                 return url
             except:
@@ -3132,7 +3130,7 @@ class Sigma:
                 url = common.parseDOM(result, "source", ret="src", attrs={"type": "video/flash"})[0]
             url = common.replaceHTMLCodes(url)
 
-            url = GetUrl(url, output='geturl').result
+            url = GetUrl(url, output='GetUrl').result
             return url
         except:
             return
@@ -3355,7 +3353,7 @@ class Novasports:
             self.list = Index().cache(self.shows_list, 24, self.shows_link)
 
             url = [i['url'] for i in self.list]
-            url = uniqueList(url).list
+            url = Uniquelist(url).list
             url = url[:5]
 
             threads = []
@@ -3625,7 +3623,7 @@ class Eradio:
             url = common.replaceHTMLCodes(url)
             url = url.encode('utf-8')
 
-            url = GetUrl(url, output='geturl').result
+            url = GetUrl(url, output='GetUrl').result
 
             image = radio['logo']
             image = self.image_link % image
@@ -4129,9 +4127,9 @@ class Livestream:
     def gm(self, url):
         try:
             import random
-            url = gm().movies_2(url)
+            url = GM().movies_2(url)
             url = random.choice(url)['url']
-            url = gm().resolve(url)
+            url = GM().resolve(url)
             return url
         except:
             return
@@ -4186,7 +4184,7 @@ class Livestream:
             result = GetUrl(url).result
             url = re.compile('"m3u8_url" *: *"(.+?)"').findall(result)
             url = [i for i in url if not i.endswith('m3u8')][-1]
-            url = GetUrl(url, output='geturl').result
+            url = GetUrl(url, output='GetUrl').result
             return url
         except:
             return
@@ -4198,7 +4196,7 @@ class Livestream:
             url = common.parseDOM(result, "path_hls")[0]
             url = url.split('[')[-1].split(']')[0]
 
-            url = GetUrl(url, output='geturl').result
+            url = GetUrl(url, output='GetUrl').result
             return url
         except:
             return
