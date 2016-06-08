@@ -1,4 +1,9 @@
 ------------------------
+Greek TV v0.0.7.2 (09-Jun-16)
+------------------------
+- Added logo for cannali web music channel
+
+------------------------
 Greek TV v0.0.7.1 (08-Jun-16)
 ------------------------
 - Fixed "Greek Movies" tv serries due to unmatched case in code from previous release
