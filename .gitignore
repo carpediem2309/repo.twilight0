@@ -20,7 +20,6 @@ $RECYCLE.BIN/
 #other
 *.pyo
 plugin.video.youtube/*
-script.module.urlresolver/*
 script.module.liveresolver/*
 _tools/*
 plugin.video.greek.tv/lib/rpdb2.py
@@ -35,3 +34,5 @@ plugin.program.SpeedTester.net/.idea/vcs.xml
 plugin.program.SpeedTester.net/.idea/inspectionProfiles/profiles_settings.xml
 plugin.program.SpeedTester.net/.idea/inspectionProfiles/Project_Default.xml
 repository.anxdpanic/*
+plugin.video.NEW/fanart.jpg
+plugin.video.NEW/icon.png
