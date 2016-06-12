@@ -42,7 +42,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.program.Twilight0" name="Twilight0 Wizard" version="2.0.0" provider-name="Twilight0">
+<addon id="plugin.program.Twilight0" name="Twilight0 Wizard" version="2.0.1" provider-name="Twilight0">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.addon.common"/>
@@ -55,6 +55,25 @@
     <description lang="en">Twilight0 Wizard can install a build duet optimized for Greek users. Lightweight, designed for either Kodi 15.x or 16.x.</description>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="plugin.video.AliveGR" name="AliveGR" version="0.0.1" provider-name="Twilight0">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">test</summary>
+		<description lang="en">test</description>
+		<license>GNU General Public License, v2</license>
+		<language>test</language>
+		<forum>test</forum>
+		<source>test</source>
+		<email>test</email>
+	</extension>
 </addon>
 
 <addon id="plugin.video.greek.tv" name="Greek TV" version="0.0.7.4" provider-name="twilight0">

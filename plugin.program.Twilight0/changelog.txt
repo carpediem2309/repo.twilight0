@@ -1,3 +1,8 @@
+v2.0.1
+Minor changes to code
+Renamed "Maintenance" to "Tools"
+Removed trademarked Kodi logo from icons
+
 v2.0.0
 Skipped version 1.0.5, bump to 2.0.0 due to huge code update
 Rebased Wizard with code found in the "The Wizard Toolbox" (http://kodimadeeasy.uk/) Thank you very much.
