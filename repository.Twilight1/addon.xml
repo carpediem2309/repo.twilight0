@@ -10,7 +10,7 @@
             <hashes>false</hashes>
         </extension>
         <extension point="xbmc.addon.metadata">
-            <summary>Repository for Wizard</summary>
+            <summary>Backup Repository</summary>
             <description></description>
             <platform>all</platform>
     </extension>
