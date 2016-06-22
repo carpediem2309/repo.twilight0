@@ -122,6 +122,10 @@ class main:
             type = urllib.unquote_plus(params["content_type"])
         except:
             type = None
+        # dirty code for the music addon (content_type doesn't work for shortcuts)
+        fp = xbmc.getInfoLabel('Container.FolderPath')
+        if any(i in fp for i in ['content_type=audio', 'action=radios_alt']): type = 'audio'
+        if type == 'audio' and action == None: action = 'root_radios_alt'
 
         if action == None:                            root().get()
         elif action == 'cache_clear_list':          index().cache_clear_list()
@@ -130,16 +134,24 @@ class main:
         elif action == 'item_queue':                  contextMenu().item_queue()
         elif action == 'playlist_open':               contextMenu().playlist_open()
         elif action == 'settings_open':               contextMenu().settings_open()
+        elif action == 'view_livetv':                 contextMenu().view('livetv')
+        elif action == 'view_radios':                 contextMenu().view('radios')
         elif action == 'view_movies':                 contextMenu().view('movies')
         elif action == 'view_tvshows':                contextMenu().view('tvshows')
         elif action == 'view_episodes':               contextMenu().view('episodes')
         elif action == 'view_cartoons':               contextMenu().view('cartoons')
+        elif action == 'favourite_livetv_add':        contextMenu().favourite_add('Live TV', channel, channel, '', '', '', '', '', refresh=True)
+        elif action == 'favourite_radio_add':         contextMenu().favourite_add('Radio', url, name, '', '', image, '', '', refresh=True)
         elif action == 'favourite_movie_add':         contextMenu().favourite_add('Movie', url, name, title, year, image, genre, plot, refresh=True)
         elif action == 'favourite_movie_from_search': contextMenu().favourite_add('Movie', url, name, title, year, image, genre, plot)
         elif action == 'favourite_tv_add':            contextMenu().favourite_add('TV Show', url, name, '', '', image, genre, plot, refresh=True)
         elif action == 'favourite_tv_from_search':    contextMenu().favourite_add('TV Show', url, name, '', '', image, genre, plot)
         elif action == 'favourite_cartoons_add':      contextMenu().favourite_add('Cartoons', url, name, title, year, image, genre, plot, refresh=True)
         elif action == 'favourite_delete':            contextMenu().favourite_delete(name, url)
+        elif action == 'livetv_refresh':              contextMenu().livetv_refresh()
+        elif action == 'root_livetv':               channels().get()
+        elif action == 'root_radios':                 root().radios()
+        elif action == 'root_radios_alt':             root().radios_alt()
         elif action == 'root_networks':               root().networks()
         elif action == 'root_shows':                  root().shows()
         elif action == 'root_movies':                 root().movies()
@@ -148,11 +160,22 @@ class main:
         elif action == 'root_news':                   root().news()
         elif action == 'root_sports':                 root().sports()
         elif action == 'root_music':                  root().music()
+        elif action == 'livetv_favourites':         favourites().livetv()
         elif action == 'radios_favourites':         favourites().radios()
         elif action == 'radios_alt_favourites':     favourites().radios()
         elif action == 'movies_favourites':         favourites().movies()
         elif action == 'shows_favourites':          favourites().shows()
         elif action == 'cartoons_favourites':       favourites().cartoons()
+        elif action == 'radios':                      eradio().radios(url)
+        elif action == 'radios_all':                  eradio().radios('radios_link')
+        elif action == 'radios_trending':             eradio().radios('trending_link')
+        elif action == 'radios_top20':                eradio().radios('top20_link')
+        elif action == 'radios_new':                  eradio().radios('new_link')
+        elif action == 'radios_alt':                  eradio().radios(url)
+        elif action == 'radios_alt_all':              eradio().radios('radios_link')
+        elif action == 'radios_alt_trending':         eradio().radios('trending_link')
+        elif action == 'radios_alt_top20':            eradio().radios('top20_link')
+        elif action == 'radios_alt_new':              eradio().radios('new_link')
         elif action == 'movies_search':             gm().search(url)
         elif action == 'movies':                    gm().movies(url)
         elif action == 'shows_search':              gm().search_tv(url)
@@ -209,6 +232,8 @@ class main:
         elif action == 'episodes_stacked':            episodes().stacked(name, url, image, genre, plot, show)
         elif action == 'episodes_reverse':            episodes().get(name, url, image, genre, plot, show, reverse=True)
         elif action == 'episodes':                    episodes().get(name, url, image, genre, plot, show)
+        elif action == 'play_live':                 resolver().live(channel)
+        elif action == 'play_radio':                resolver().radio(url)
         elif action == 'play':                      resolver().run(url)
 
 
@@ -301,6 +326,40 @@ class player(xbmc.Player):
     def run(self, url):
         item = xbmcgui.ListItem(path=url)
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, item)
+
+    def live(self, name, title, epg, image, url):
+        name = re.sub('\s[(]\d{1}[)]$', '', name)
+
+        date = datetime.datetime.now().strftime("%Y-%m-%d")
+
+        if image == '0':
+            image = '%s/%s.png' % (addonLogos, re.sub('\s[(]\d{1}[)]$', '', name))
+            if not xbmcvfs.exists(image): image = '%s/na.png' % addonLogos
+
+        if title == '0': title = name
+        if not xbmc.getInfoLabel('listItem.plot') == '': epg = xbmc.getInfoLabel('listItem.plot')
+
+        meta = {'title': title, 'tvshowtitle': name, 'studio': name, 'premiered': date, 'director': name,
+                'writer': name, 'plot': epg, 'genre': 'TV'}
+
+        item = xbmcgui.ListItem(path=url, iconImage=image, thumbnailImage=image)
+        item.setInfo(type="Video", infoLabels=meta)
+
+        xbmc.PlayList(xbmc.PLAYLIST_VIDEO).clear()
+        xbmc.Player().play(url, item)
+
+    def radio(self, name, url, image):
+        if image == '0': image = '%s/na_radio.png' % addonLogos
+
+        meta = {'title': name, 'album': name, 'artist': name, 'genre': 'Greek', 'duration': '1440', 'comment': name}
+
+        item = xbmcgui.ListItem(path=url, iconImage=image, thumbnailImage=image)
+        item.setInfo(type="Video", infoLabels={"title": ""})
+        item.setInfo(type="Music", infoLabels=meta)
+
+        xbmc.PlayList(xbmc.PLAYLIST_VIDEO).clear()
+        xbmc.PlayList(xbmc.PLAYLIST_MUSIC).clear()
+        xbmc.Player().play(url, item)
 
     def onPlayBackStarted(self):
         return
@@ -976,9 +1035,21 @@ class contextMenu:
         except:
             return
 
+    def livetv_refresh(self):
+        try:
+            dbcon = database.connect(addonCache)
+            dbcur = dbcon.cursor()
+            dbcur.execute("DELETE FROM rel_list WHERE func = 'channels.channel_list'")
+            dbcon.commit()
+            xbmc.executebuiltin('Container.Refresh')
+        except:
+            return
+
+
 class root:
     def get(self):
         rootList = []
+        rootList.append({'name': 30501, 'image': 'root_livetv.jpg', 'action': 'root_livetv'})
         rootList.append({'name': 30502, 'image': 'root_radios.jpg', 'action': 'root_radios'})
         rootList.append({'name': 30503, 'image': 'root_networks.jpg', 'action': 'root_networks'})
         rootList.append({'name': 30504, 'image': 'root_shows.jpg', 'action': 'root_shows'})
@@ -989,6 +1060,56 @@ class root:
         rootList.append({'name': 30509, 'image': 'root_news.jpg', 'action': 'root_news'})
         rootList.append({'name': 30510, 'image': 'root_sports.jpg', 'action': 'root_sports'})
         rootList.append({'name': 30511, 'image': 'root_music.jpg', 'action': 'root_music'})
+        index().rootList(rootList)
+
+    def radios(self):
+        import random
+        img = ['radios_random1.jpg', 'radios_random2.jpg', 'radios_random3.jpg', 'radios_random4.jpg',
+               'radios_random5.jpg', 'radios_random6.jpg', 'radios_random7.jpg', 'radios_random8.jpg']
+
+        rootList = []
+        rootList.append({'name': 30521, 'image': 'radios_all.jpg', 'action': 'radios_all'})
+        rootList.append({'name': 30522, 'image': 'radios_favourites.jpg', 'action': 'radios_favourites'})
+        rootList.append({'name': 30523, 'image': 'radios_trending.jpg', 'action': 'radios_trending'})
+        rootList.append({'name': 30524, 'image': 'radios_top20.jpg', 'action': 'radios_top20'})
+        rootList.append({'name': 30525, 'image': 'radios_new.jpg', 'action': 'radios_new'})
+        try:
+            genres = eradio().genres()
+            for i in range(0, len(genres)): genres[i].update({'image': random.choice(img), 'action': 'radios'})
+            rootList += genres
+        except:
+            pass
+        try:
+            regions = eradio().regions()
+            for i in range(0, len(regions)): regions[i].update({'image': random.choice(img), 'action': 'radios'})
+            rootList += regions
+        except:
+            pass
+        index().rootList(rootList)
+
+    def radios_alt(self):
+        import random
+        img = ['radios_random1.jpg', 'radios_random2.jpg', 'radios_random3.jpg', 'radios_random4.jpg',
+               'radios_random5.jpg', 'radios_random6.jpg', 'radios_random7.jpg', 'radios_random8.jpg']
+
+        rootList = []
+        rootList.append({'name': 30521, 'image': 'radios_all.jpg', 'action': 'radios_alt_all'})
+        rootList.append({'name': 30522, 'image': 'radios_favourites.jpg', 'action': 'radios_alt_favourites'})
+        rootList.append({'name': 30523, 'image': 'radios_trending.jpg', 'action': 'radios_alt_trending'})
+        rootList.append({'name': 30524, 'image': 'radios_top20.jpg', 'action': 'radios_alt_top20'})
+        rootList.append({'name': 30525, 'image': 'radios_new.jpg', 'action': 'radios_alt_new'})
+        try:
+            genres = eradio().genres()
+            for i in range(0, len(genres)): genres[i].update({'image': random.choice(img), 'action': 'radios_alt'})
+            rootList += genres
+        except:
+            pass
+        try:
+            regions = eradio().regions()
+            for i in range(0, len(regions)): regions[i].update({'image': random.choice(img), 'action': 'radios_alt'})
+            rootList += regions
+        except:
+            pass
         index().rootList(rootList)
 
     def networks(self):
@@ -1066,6 +1187,7 @@ class root:
 
     def favourites(self):
         rootList = []
+        rootList.append({'name': 30571, 'image': 'livetv_favourites.jpg', 'action': 'livetv_favourites'})
         rootList.append({'name': 30572, 'image': 'radios_favourites.jpg', 'action': 'radios_favourites'})
         rootList.append({'name': 30573, 'image': 'shows_favourites.jpg', 'action': 'shows_favourites'})
         rootList.append({'name': 30574, 'image': 'movies_favourites.jpg', 'action': 'movies_favourites'})
@@ -1107,6 +1229,43 @@ class root:
 class favourites:
     def __init__(self):
         self.list = []
+
+    def livetv(self):
+        try:
+            dbcon = database.connect(addonSettings)
+            dbcur = dbcon.cursor()
+            dbcur.execute("SELECT * FROM favourites WHERE video_type ='Live TV'")
+            match = dbcur.fetchall()
+            match = [(i[0]) for i in match]
+
+            self.list = channels().get(idx=False)
+            self.list = [i for i in self.list if i['name'] in match]
+            self.list = sorted(self.list, key=itemgetter('name'))
+
+            index().channelList(self.list)
+        except:
+            return
+
+    def radios(self):
+        try:
+            dbcon = database.connect(addonSettings)
+            dbcur = dbcon.cursor()
+            dbcur.execute("SELECT * FROM favourites WHERE video_type ='Radio'")
+            match = dbcur.fetchall()
+            match = [(i[0], i[2], i[5]) for i in match]
+
+            for url, name, image in match:
+                try:
+                    name, image = eval(name.encode('utf-8')), eval(image.encode('utf-8'))
+
+                    self.list.append({'name': name, 'url': url, 'image': image})
+                except:
+                    pass
+
+            self.list = sorted(self.list, key=itemgetter('name'))
+            index().radioList(self.list)
+        except:
+            return
 
     def shows(self):
         try:
@@ -1189,6 +1348,156 @@ class favourites:
             index().cartoonList(self.list)
         except:
             return
+
+
+class channels:
+    def __init__(self):
+        self.list = []
+
+        self.channelMap = {'MEGA': '10', 'ANT1': '7', 'ALPHA': '5', 'STAR': '12', 'SKAI': '11', 'MACEDONIA TV': '8',
+                           'EPT1': '4', 'EPT2': '352', 'RIK SAT': '83', 'BLUE SKY': '200', 'E TV': '326',
+                           'EXTRA CHANNEL': '191', 'CHANNEL 9': '199', 'KONTRA CHANNEL': '194', 'ART CHANNEL': '248',
+                           'AB CHANNEL': '249', 'TV 100': '229', 'DELTA TV': '236', 'DIKTYO TV': '235',
+                           'STAR CENTRAL GR': '230', 'ALFA TV': '372', 'ATTICA TV': '190', 'BEST TV': '332',
+                           'IONIAN CHANNEL': '360', 'SUPER B': '368', 'COSMOS TV': '370', 'KANALI 6': '377',
+                           'R CHANNEL': '380', 'THRAKI NET': '382', 'ASTRA TV': '400', 'ACTION24': '189',
+                           'BOYLH TV': '1', 'SBC': '228', 'NICKELODEON': '193', 'MAD TV': '9', 'MTV GREECE': '138',
+                           '4E': '222', 'TV AIGAIO': '330', 'CORFU TV': '331', 'KRITI TV': '227', 'EPIRUS TV1': '234',
+                           'KOSMOS': '334', 'EURONEWS': '119', 'MEGA CYPRUS': '306', 'ANT1 CYPRUS': '258',
+                           'SIGMA': '305', 'PLUS TV': '289', 'EXTRA TV': '290', 'CAPITAL': '282', 'RIK 1': '274',
+                           'RIK 2': '277'}
+
+        self.entertainmentMap = ['EPT3', 'CAPITAL']
+        self.movieMap = ['GREEK CINEMA 50s', 'GREEK CINEMA 60s', 'GREEK CINEMA 70s', 'GREEK CINEMA 80s', 'GREEK CINEMA']
+        self.childrenMap = ['NICKELODEON', 'NICKELODEON+', 'SMILE', 'WZRA KIDS']
+        self.sportMap = ['CY SPORTS', 'ODIE TV']
+        self.musicMap = ['MAD TV', 'MAD TV CYPRUS']
+        self.newsMap = ['SBC']
+
+        self.dt_link = 'http://www.tvcontrol.gr/app_api/functions.php?method=DateTime_Get'
+        self.packet_1_link = 'http://www.tvcontrol.gr/json/now-next/packet_1.json'
+        self.packet_2_link = 'http://www.tvcontrol.gr/json/now-next/packet_2.json'
+        self.packet_9_link = 'http://www.tvcontrol.gr/json/now-next/packet_9.json'
+
+    def get(self, idx=True):
+        self.list = index().cache(self.channel_list, 0.02)
+        if idx == True: index().channelList(self.list)
+        return self.list
+
+    def channel_list(self):
+        try:
+            result = getUrl(addonChannels).result
+            channels = common.parseDOM(result, "channel", attrs={"active": "True"})
+        except:
+            return
+
+        try:
+            result = getUrl(self.dt_link).result
+            result = json.loads(result)
+            dt = int(result['DateTimeInt'])
+
+            self.programmes = []
+
+            def programmes_thread(url):
+                self.programmes += json.loads(getUrl(url).result)
+
+            threads = []
+            url = [self.packet_1_link, self.packet_2_link, self.packet_9_link]
+            for u in url: threads.append(Thread(programmes_thread, u))
+            [i.start() for i in threads]
+            [i.join() for i in threads]
+
+            programmes = self.programmes
+            programmes = [i for x, i in enumerate(programmes) if i not in programmes[x + 1:]]
+            programmes = [i for i in programmes if int(i['stop_date_local']) > dt]
+        except:
+            pass
+
+        for channel in channels:
+            try:
+                name = common.parseDOM(channel, "name")[0]
+
+                try:
+                    type = common.parseDOM(channel, "type")[0]
+                except:
+                    type = ''
+
+                url = common.parseDOM(channel, "url")[0]
+                url = common.replaceHTMLCodes(url)
+
+                try:
+                    if name in self.entertainmentMap:
+                        title = 'Ψυχαγωγικό πρόγραμμα'.decode('utf-8')
+                    elif name in self.childrenMap:
+                        title = 'Παιδικό πρόγραμμα'.decode('utf-8')
+                    elif name in self.sportMap:
+                        title = 'Αθλητικό πρόγραμμα'.decode('utf-8')
+                    elif name in self.musicMap:
+                        title = 'Μουσικό πρόγραμμα'.decode('utf-8')
+                    elif name in self.newsMap:
+                        title = 'Ενημερωτικό πρόγραμμα'.decode('utf-8')
+                    elif name in self.movieMap:
+                        title = 'Ταινία'.decode('utf-8')
+                    else:
+                        title = '0'
+
+                    epg = '[B]ΤΩΡΑ[/B]\nΔεν υπάρχουν πληροφορίες\n\n[B]ΕΠΟΜΕΝΟ[/B]\nΔεν υπάρχουν πληροφορίες'.decode('utf-8')
+
+                    image = '0'
+
+                    n = re.sub('\s[(]\d{1}[)]$', '', name)
+                    p = [i for i in programmes if i['channel_id'] == self.channelMap[n]]
+                    p = sorted(p, key=itemgetter('start_date_local'))[:2]
+
+                    title = p[0]['constructed_titlegr']
+
+                    image = p[0]['imgsrc']
+                    if image == '': image = '0'
+
+                    start, stop = p[0]['start_date_local'], p[0]['stop_date_local']
+                    start, stop = self.dt_processor(start), self.dt_processor(stop)
+                    start = '%s:%s' % (start[8:][:4][:2], start[8:][:4][2:])
+                    stop = '%s:%s' % (stop[8:][:4][:2], stop[8:][:4][2:])
+
+                    epg = '[B]%s[/B]\n%s'.decode('iso-8859-7') % (start, title)
+                    try:
+                        epg += '\n\n[B]%s[/B]\n%s'.decode('iso-8859-7') % (stop, p[1]['constructed_titlegr'])
+                    except:
+                        epg += '\n\n[B]ΕΠΟΜΕΝΟ[/B]\nΔεν υπάρχουν πληροφορίες'.decode('utf-8') % stop
+                    epg = common.replaceHTMLCodes(epg)
+                except:
+                    pass
+
+                self.list.append({'name': name, 'title': title, 'epg': epg, 'image': image, 'url': url, 'type': type})
+            except:
+                pass
+
+        return self.list
+
+    def dt_processor(self, dt):
+        dt1 = datetime.datetime.utcnow() + datetime.timedelta(hours=2)
+        d = datetime.datetime(dt1.year, 4, 1)
+        dston = d - datetime.timedelta(days=d.weekday() + 1)
+        d = datetime.datetime(dt1.year, 11, 1)
+        dstoff = d - datetime.timedelta(days=d.weekday() + 1)
+        if dston <= dt1 < dstoff: dt1 = dt1 + datetime.timedelta(hours=1)
+        dt1 = datetime.datetime(dt1.year, dt1.month, dt1.day, dt1.hour)
+
+        dt2 = datetime.datetime.now()
+        dt2 = datetime.datetime(dt2.year, dt2.month, dt2.day, dt2.hour)
+
+        dt3 = datetime.datetime.utcnow()
+        dt3 = datetime.datetime(dt3.year, dt3.month, dt3.day, dt3.hour)
+        dt = datetime.datetime(*time.strptime(dt, "%Y%m%d%H%M%S")[:6])
+        if dt2 >= dt1:
+            dtd = (dt2 - dt1).seconds / 60 / 60
+            dt = dt + datetime.timedelta(hours=int(dtd))
+        else:
+            dtd = (dt1 - dt2).seconds / 60 / 60
+            dt = dt - datetime.timedelta(hours=int(dtd))
+
+        dt = dt.strftime("%Y%m%d%H%M%S")
+        return dt
 
 
 class archives:
@@ -1440,6 +1749,44 @@ class resolver:
             if url is None: raise Exception()
 
             player().run(url)
+            return url
+        except:
+            index().infoDialog(language(30306).encode("utf-8"))
+            return
+
+    def radio(self, url):
+        try:
+            name, url, image = eradio().resolve(url)
+            if url is None: raise Exception()
+
+            player().radio(name, url, image)
+            return url
+        except:
+            index().infoDialog(language(30306).encode("utf-8"))
+            return
+
+    def live(self, channel):
+        try:
+            dialog = xbmcgui.DialogProgress()
+            dialog.create(addonName.encode("utf-8"), language(30341).encode("utf-8"))
+            dialog.update(0)
+
+            ch = channel.replace('_', ' ')
+
+            data = channels().get(idx=False)
+
+            i = [i for i in data if ch == i['name']][0]
+            name, title, epg, image, url, type = i['name'], i['title'], i['epg'], i['image'], i['url'], i['type']
+
+            try:
+                url = getattr(livestream(), type)(url)
+            except:
+                pass
+            if url is None: raise Exception()
+
+            dialog.close()
+
+            player().live(name, title, epg, image, url)
             return url
         except:
             index().infoDialog(language(30306).encode("utf-8"))
@@ -3149,6 +3496,142 @@ class novasports:
             return
 
 
+class eradio:
+    def __init__(self):
+        self.list = []
+        self.base_link = 'http://eradio.mobi'
+        self.radios_link = 'http://eradio.mobi/cache/1/1/medialist.json'
+        self.trending_link = 'http://eradio.mobi/cache/1/1/medialistTop_trending.json'
+        self.top20_link = 'http://eradio.mobi/cache/1/1/medialist_top20.json'
+        self.new_link = 'http://eradio.mobi/cache/1/1/medialist_new.json'
+        self.genres_link = 'http://eradio.mobi/cache/1/1/categories.json'
+        self.regions_link = 'http://eradio.mobi/cache/1/1/regions.json'
+        self.genre_link = 'http://eradio.mobi/cache/1/1/medialist_categoryID%s.json'
+        self.region_link = 'http://eradio.mobi/cache/1/1/medialist_regionID%s.json'
+        self.resolve_link = 'http://eradio.mobi/cache/1/1/media/%s.json'
+        self.image_link = 'http://cdn.e-radio.gr/logos/%s'
+
+    def genres(self):
+        try:
+            self.list = index().cache(self.categories_list, 24, self.genres_link)
+            return self.list
+        except:
+            pass
+
+    def regions(self):
+        try:
+            self.list = index().cache(self.categories_list, 24, self.regions_link)
+            return self.list
+        except:
+            pass
+
+    def radios(self, url):
+        try:
+            url = getattr(self, url)
+        except:
+            pass
+        self.list = index().cache(self.radios_list, 24, url)
+        index().radioList(self.list)
+        return self.list
+
+    def categories_list(self, url):
+        try:
+            result = getUrl(url, mobile=True).result
+            result = json.loads(result)
+
+            try:
+                categories = result['categories']
+            except:
+                categories = result['countries']
+        except:
+            return
+
+        for cat in categories:
+            try:
+                try:
+                    name = cat['categoryName']
+                except:
+                    name = cat['regionName']
+                name = common.replaceHTMLCodes(name)
+                name = name.encode('utf-8')
+
+                try:
+                    url = self.genre_link % str(cat['categoryID'])
+                except:
+                    url = self.region_link % str(cat['regionID'])
+                url = common.replaceHTMLCodes(url)
+                url = url.encode('utf-8')
+
+                self.list.append({'name': name, 'url': url})
+            except:
+                pass
+
+        return self.list
+
+    def radios_list(self, url):
+        try:
+            result = getUrl(url, mobile=True).result
+            result = json.loads(result)
+
+            radios = result['media']
+        except:
+            return
+
+        for radio in radios:
+            try:
+                name = radio['name'].strip()
+                name = common.replaceHTMLCodes(name)
+                name = name.encode('utf-8')
+
+                url = str(radio['stationID'])
+                url = common.replaceHTMLCodes(url)
+                url = url.encode('utf-8')
+
+                image = radio['logo']
+                image = self.image_link % image
+                image = image.replace('/promo/', '/500/')
+                if image.endswith('/nologo.png'): image = '0'
+                image = common.replaceHTMLCodes(image)
+                image = image.encode('utf-8')
+
+                self.list.append({'name': name, 'url': url, 'image': image})
+            except:
+                pass
+
+        return self.list
+
+    def resolve(self, url):
+        try:
+            url = self.resolve_link % url
+
+            result = getUrl(url, mobile=True).result
+            result = json.loads(result)
+
+            radio = result['media'][0]
+
+            name = radio['name'].strip()
+            name = common.replaceHTMLCodes(name)
+            name = name.encode('utf-8')
+
+            url = radio['mediaUrl'][0]['liveURL']
+            if not url.startswith('http://'): url = '%s%s' % ('http://', url)
+            url = common.replaceHTMLCodes(url)
+            url = url.encode('utf-8')
+
+            url = getUrl(url, output='geturl').result
+
+            image = radio['logo']
+            image = self.image_link % image
+            image = image.replace('/promo/', '/500/')
+            if image.endswith('/nologo.png'): image = '0'
+            image = common.replaceHTMLCodes(image)
+            image = image.encode('utf-8')
+
+            return (name, url, image)
+        except:
+            return
+
+
 class mtvchart:
     def __init__(self):
         self.list = []
@@ -3733,5 +4216,20 @@ class livestream:
                     return url
         except:
             return
+
+    def veetle(self, url):
+        try:
+            akamaiProxy = os.path.join(addonPath, 'akamaisecurehd.py')
+            xbmc.executebuiltin('RunScript(%s)' % akamaiProxy)
+            name = url.split("#")[-1]
+            url = 'http://www.veetle.com/index.php/channel/ajaxStreamLocation/%s/flash' % name
+            result = getUrl(url).result
+            url = json.loads(result)
+            url = base64.encodestring(url['payload']).replace('\n', '')
+            url = 'http://127.0.0.1:64653/veetle/%s' % url
+            return url
+        except:
+            return
+
 
 main()

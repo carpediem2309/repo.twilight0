@@ -1,8 +1,7 @@
 ------------------------
-Greek TV v0.0.8 (22-Jun-16)
+Greek TV v0.0.8.1 (22-Jun-16)
 ------------------------
-- Removed Live TV section
-- Removed Radio section
+- Reverted changes from 0.0.8
 
 ------------------------
 Greek TV v0.0.7.4 (12-Jun-16)
