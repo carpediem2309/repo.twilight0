@@ -55,12 +55,12 @@ def build_url(query):
     return addon_url + '?' + urllib.urlencode(query)
 
 
-mode = args_handler.get('mode', None)
-if mode is None:
-    url = build_url({'mode': 'folder', 'foldername': 30001})
+action = args_handler.get('action', None)
+if action is None:
+    url = build_url({'action': 'folder', 'LiveTV': 30001})
     LiveTV = xbmcgui.ListItem(language(30001), iconImage=LiveTVimage)
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=channel_urls, listitem=LiveTV)
-    url = build_url({'mode': 'folder', 'foldername': 30002})
+    url = build_url({'action': 'folder', 'Radio': 30002})
     Radio = xbmcgui.ListItem(language(30002), iconImage=RadioImage)
     xbmcplugin.addDirectoryItem(handle=addon_handle, url=radio_urls, listitem=Radio)
     xbmcplugin.endOfDirectory(addon_handle)

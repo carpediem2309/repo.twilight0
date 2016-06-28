@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.AliveGR" name="AliveGR" version="0.0.2~alpha" provider-name="Twilight0">
+<addon id="plugin.video.AliveGR" name="AliveGR" version="0.0.3~alpha" provider-name="Twilight0">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.lamlib" optional="true"/>
         <import addon="script.module.requests" optional="true"/>
-        <import addon="script.module.addon.common" optional="true"/>
         <import addon="plugin.video.youtube" optional="true" />
         <import addon="script.module.urlresolver" optional="true" />
     </requires>
@@ -13,9 +13,9 @@
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
         <summary lang="en">AliveGR is an addon offering streaming content available in Greece</summary>
-        <description lang="en">Please visit the TVADDONS.ag forums for support</description>
+        <description lang="en">This is "alpha" software so errors are to be expected. Please visit the TVADDONS.ag forums for support</description>
         <summary lang="el">Το AliveGR είναι ένα πρόσθετο που προσφέρει περιεχόμενο διαθέσιμο στην Ελλάδα</summary>
-        <description lang="el">Παρακαλώ επισκεφθείτε την ιστοσελίδα TVADDONS.ag για υποστήριξη</description>
+        <description lang="el">Το παρόν λογισμικό χαρακτηρίζεται ως "alpha" και τα όποια σφάλματα είναι αναμενόμενα. Παρακαλώ επισκεφθείτε την ιστοσελίδα TVADDONS.ag για υποστήριξη</description>
         <license>GNU General Public License, v2</license>
         <email>twilight@freemail.gr</email>
     </extension>
